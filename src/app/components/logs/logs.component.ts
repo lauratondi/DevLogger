@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LogService } from '../../services/log.service';
-import { Log } from '../../models/log';
+import { Log } from '../../models/Log';
 
 @Component({
   selector: 'app-logs',
@@ -22,5 +22,11 @@ export class LogsComponent implements OnInit {
 
   onSelect(log: Log) {
     this.logService.setFormLog(log);
+  }
+
+  onDelete(log: Log) {
+    if (confirm('Are you sure?')) {
+      this.logService.deleteLog(log);
+    }
   }
 }
